@@ -12,16 +12,24 @@ import 'package:auto_route/auto_route.dart' as _i11;
 import 'package:flutter/cupertino.dart' as _i13;
 import 'package:flutter/material.dart' as _i12;
 
-import '../../features/notr/presentation/pages/app_init.dart' as _i1;
-import '../../features/notr/presentation/pages/buddies_page.dart' as _i8;
-import '../../features/notr/presentation/pages/discover_page.dart' as _i9;
-import '../../features/notr/presentation/pages/home_page.dart' as _i6;
-import '../../features/notr/presentation/pages/login_page.dart' as _i2;
-import '../../features/notr/presentation/pages/profile_page.dart' as _i7;
-import '../../features/notr/presentation/pages/registration_page.dart' as _i3;
-import '../../features/notr/presentation/pages/reset_password_page.dart' as _i4;
-import '../../features/notr/presentation/pages/settings_page.dart' as _i10;
-import '../../features/notr/presentation/pages/verify_page.dart' as _i5;
+import '../../features/authentication/presentation/pages/app_init.dart' as _i1;
+import '../../features/authentication/presentation/pages/buddies_page.dart'
+    as _i8;
+import '../../features/authentication/presentation/pages/discover_page.dart'
+    as _i9;
+import '../../features/authentication/presentation/pages/home_page.dart' as _i6;
+import '../../features/authentication/presentation/pages/login_page.dart'
+    as _i2;
+import '../../features/authentication/presentation/pages/profile_page.dart'
+    as _i7;
+import '../../features/authentication/presentation/pages/registration_page.dart'
+    as _i3;
+import '../../features/authentication/presentation/pages/reset_password_page.dart'
+    as _i4;
+import '../../features/authentication/presentation/pages/settings_page.dart'
+    as _i10;
+import '../../features/authentication/presentation/pages/verify_page.dart'
+    as _i5;
 
 class AppRouter extends _i11.RootStackRouter {
   AppRouter([_i12.GlobalKey<_i12.NavigatorState>? navigatorKey])

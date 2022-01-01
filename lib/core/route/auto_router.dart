@@ -1,16 +1,17 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:spotr/features/notr/presentation/pages/buddies_page.dart';
-import 'package:spotr/features/notr/presentation/pages/discover_page.dart';
-import 'package:spotr/features/notr/presentation/pages/home_page.dart';
-import 'package:spotr/features/notr/presentation/pages/profile_page.dart';
-import 'package:spotr/features/notr/presentation/pages/registration_page.dart';
-import 'package:spotr/features/notr/presentation/pages/reset_password_page.dart';
-import 'package:spotr/features/notr/presentation/pages/settings_page.dart';
-import 'package:spotr/features/notr/presentation/pages/verify_page.dart';
 
-import '../../features/notr/presentation/pages/login_page.dart';
-import '../../features/notr/presentation/pages/app_init.dart';
+import '../../features/authentication/presentation/pages/buddies_page.dart';
+import '../../features/authentication/presentation/pages/discover_page.dart';
+import '../../features/authentication/presentation/pages/home_page.dart';
+import '../../features/authentication/presentation/pages/profile_page.dart';
+import '../../features/authentication/presentation/pages/registration_page.dart';
+import '../../features/authentication/presentation/pages/reset_password_page.dart';
+import '../../features/authentication/presentation/pages/settings_page.dart';
+import '../../features/authentication/presentation/pages/verify_page.dart';
+
+import '../../features/authentication/presentation/pages/login_page.dart';
+import '../../features/authentication/presentation/pages/app_init.dart';
 
 @MaterialAutoRouter(
   preferRelativeImports: true,

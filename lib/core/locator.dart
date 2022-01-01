@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
-import 'package:spotr/core/authentication/bloc/authentication_bloc.dart';
-import 'package:spotr/features/notr/data/datasource/remote_datasource.dart';
-import 'package:spotr/features/notr/data/repository/authentication_repository_impl.dart';
-import 'package:spotr/features/notr/domain/repository/authentication_repository.dart';
-import 'package:spotr/features/notr/domain/usecases/check_email_verification_status.dart';
-import 'package:spotr/features/notr/domain/usecases/listen_to_user_login_status.dart';
-import 'package:spotr/features/notr/domain/usecases/login_user.dart';
-import 'package:spotr/features/notr/domain/usecases/register_user.dart';
-import 'package:spotr/features/notr/domain/usecases/send_password_reset_link.dart';
-import 'package:spotr/features/notr/domain/usecases/send_verification_email.dart';
+import 'authentication/bloc/authentication_bloc.dart';
+import '../features/authentication/data/datasource/remote_datasource.dart';
+import '../features/authentication/data/repository/authentication_repository_impl.dart';
+import '../features/authentication/domain/repository/authentication_repository.dart';
+import '../features/authentication/domain/usecases/check_email_verification_status.dart';
+import '../features/authentication/domain/usecases/listen_to_user_login_status.dart';
+import '../features/authentication/domain/usecases/login_user.dart';
+import '../features/authentication/domain/usecases/register_user.dart';
+import '../features/authentication/domain/usecases/send_password_reset_link.dart';
+import '../features/authentication/domain/usecases/send_verification_email.dart';
 
 import 'app_logic/bloc/app_bloc.dart';
 import 'route/auto_router.gr.dart';
