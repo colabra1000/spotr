@@ -1,0 +1,3 @@
+// class interests {
+//   int value;
+// }
