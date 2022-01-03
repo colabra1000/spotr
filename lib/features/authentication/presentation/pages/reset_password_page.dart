@@ -26,8 +26,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   bool verificationCodeIsSent = false;
   CModalController modalController = CModalController();
 
-  TextEditingController emailTextController =
-      TextEditingController(text: "r@mailinator.com");
+  TextEditingController emailTextController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override

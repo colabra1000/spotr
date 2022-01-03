@@ -4,11 +4,13 @@ import 'package:spotr/core/errors/errorTypes.dart';
 import 'package:spotr/core/errors/exceptions.dart';
 import 'package:spotr/features/authentication/data/model/user_info_model.dart';
 import 'package:spotr/features/authentication/domain/entities/user_info.dart';
+import 'package:spotr/features/main_app/domain/usecases/update_user_info.dart';
+import 'package:spotr/features/main_app/presentation/bloc/settings_page/settings_page_bloc.dart';
 
 abstract class MainAppRemoteDatasource {
   Stream<DocumentSnapshot<Object?>> listenToUserInfo();
   Future<UserInfo?> getUserInfo();
-  Future<String> updateUserInfo({required UserInfo userInfo});
+  Future<String> updateUserInfo({required UpdateUserInfoParam userInfoParam});
 }
 
 class MainAppRemoteDatasourceImpl implements MainAppRemoteDatasource {
@@ -48,8 +50,27 @@ class MainAppRemoteDatasourceImpl implements MainAppRemoteDatasource {
   }
 
   @override
-  Future<String> updateUserInfo({required UserInfo userInfo}) {
-    // TODO: implement updateUserInfo
-    throw UnimplementedError();
+  Future<String> updateUserInfo(
+      {required UpdateUserInfoParam userInfoParam}) async {
+    if (userInfoParam.settingsType == SettingsType.updateUsername) {
+      CollectionReference userInfo = firebaseFirestore.collection('user_info');
+      final check = await userInfo
+          .where("username", isEqualTo: userInfoParam.fieldValue)
+          .get();
+      if (check.docs.isNotEmpty) {
+        throw ServerException(errorTypes: ErrorTypes.userNameAlreadyInUse);
+      }
+      await userInfo
+          .doc(_user!.uid)
+          .update({"username": userInfoParam.fieldValue});
+      return "success";
+    }
+
+    // if (userInfoParam.settingsType == SettingsType.updatePassword) {
+    //   await _user!.verifyBeforeUpdateEmail(userInfoParam.fieldValue);
+    //   return "success";
+    // }
+
+    throw ServerException(errorTypes: ErrorTypes.unKnown);
   }
 }

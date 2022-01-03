@@ -9,8 +9,18 @@ abstract class SettingsPageEvent extends Equatable {
 
 class InitializeSettingsEvent extends SettingsPageEvent {}
 
-class UpdateUsernameEvent extends SettingsPageEvent {}
+class NavigateToUpdateUsernamePageEvent extends SettingsPageEvent {}
 
-class UpdatePasswordEvent extends SettingsPageEvent {}
+class NavigateToUpdatePasswordPageEvent extends SettingsPageEvent {}
 
-class UpdateEmailEvent extends SettingsPageEvent {}
+class NavigateToUpdateEmailPageEvent extends SettingsPageEvent {}
+
+class UpdateUserInfoEvent extends SettingsPageEvent {
+  final SettingsType settingsType;
+  final String fieldValue;
+
+  const UpdateUserInfoEvent(
+      {required this.settingsType, required this.fieldValue});
+  @override
+  List<Object> get props => [settingsType, fieldValue];
+}

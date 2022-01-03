@@ -90,9 +90,9 @@ void setupLocator() {
       ));
 
   locator.registerFactory(() => SettingsPageBloc(
-        getUserInfo: locator(),
-        updateUserInfo: locator(),
-      ));
+      getUserInfo: locator(),
+      updateUserInfo: locator(),
+      listenToUserInfo: locator()));
 
   // locator.registerLazySingleton(() => ProfilePageBloc());
 

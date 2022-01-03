@@ -40,19 +40,19 @@ class _MainSettingsPageState extends State<MainSettingsPage> {
         _doConstruction(
             onPressed: () {
               BlocProvider.of<SettingsPageBloc>(context)
-                  .add(UpdateUsernameEvent());
+                  .add(NavigateToUpdateUsernamePageEvent());
             },
             label: "update username"),
         _doConstruction(
             onPressed: () {
               BlocProvider.of<SettingsPageBloc>(context)
-                  .add(UpdatePasswordEvent());
+                  .add(NavigateToUpdatePasswordPageEvent());
             },
             label: "update password"),
         _doConstruction(
             onPressed: () {
               BlocProvider.of<SettingsPageBloc>(context)
-                  .add(UpdateEmailEvent());
+                  .add(NavigateToUpdateEmailPageEvent());
             },
             label: "update email"),
       ],

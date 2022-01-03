@@ -1,16 +1,17 @@
 # spotr
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Progress
 
-A few resources to get you started if this is your first Flutter project:
+validate fields both front end and back end   --  done
+login   --  done
+registration   --   done
+forgot password  --  done
+verify email  --  done
+update username  --  done
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+verify phone number   --   not done
+update email  --  not done
+update password  --  not done
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

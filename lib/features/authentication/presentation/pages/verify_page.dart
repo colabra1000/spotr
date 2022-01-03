@@ -145,8 +145,8 @@ class _VerifyPageState extends State<VerifyPage> {
         children: [
           Text(
             emailSent
-                ? "An email has been sent to email@mail.com"
-                : "Follow the confirmation email sent to email@mail.com to confirm your account",
+                ? "An email has been sent to you"
+                : "click the confirmation email sent to your email to confirm your account",
             style: smallText,
           ),
           if (emailSent)
@@ -161,7 +161,12 @@ class _VerifyPageState extends State<VerifyPage> {
                     },
                     child: const Text("click here to resend")),
               ],
-            )
+            ),
+          SizedBox(height: 30.h),
+          Text(
+            "you would be redirected automatically when you verify your email.",
+            style: tinyText,
+          )
         ],
       ),
     );
@@ -175,7 +180,7 @@ class _VerifyPageState extends State<VerifyPage> {
         children: [
           Text(
             emailSent
-                ? "A code has been sent to your number"
+                ? "this feature is not yet implemented"
                 : "Enter the code sent to your email below",
             style: smallText,
           ),
@@ -205,7 +210,7 @@ class _VerifyPageState extends State<VerifyPage> {
           child: Text(
             verifyByEmail
                 ? "send verification email now"
-                : "send code to phone now",
+                : "this feature is not yet implemented",
             style: smallTextLight,
           ),
           onPressed: () {

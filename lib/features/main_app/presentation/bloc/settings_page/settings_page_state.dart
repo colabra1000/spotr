@@ -19,9 +19,19 @@ class SettingsPageIdle extends SettingsPageState {
   List<Object> get props => [settingsType, fieldValue];
 }
 
-class SettingsPageError extends SettingsPageState {}
+class SettingsPageError extends SettingsPageState {
+  final String errorMessage;
+  const SettingsPageError({required this.errorMessage});
+  @override
+  List<Object> get props => [errorMessage];
+}
 
-class SettingsPageAlert extends SettingsPageState {}
+class SettingsPageAlert extends SettingsPageState {
+  final String alertMessage;
+  const SettingsPageAlert({required this.alertMessage});
+  @override
+  List<Object> get props => [alertMessage];
+}
 
 class SettingsPageInitial extends SettingsPageState {}
 

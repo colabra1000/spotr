@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spotr/features/authentication/presentation/widgets/enums.dart';
 
 import '../../../../core/features/authentication/authentication_ui_helper.dart';
 import '../../../../core/features/authentication/bloc/authentication_bloc.dart';
@@ -104,6 +105,7 @@ class _LoginPageState extends State<LoginPage> {
       child: Column(
         children: [
           LabelAndTextField(
+            textFieldType: TextFieldType.text,
             validator: FormValidationHelper.validateUsernameOrPhoneNumber,
             controller: _usernameController,
             label: "username / phone number",
@@ -112,6 +114,7 @@ class _LoginPageState extends State<LoginPage> {
             height: 20.h,
           ),
           LabelAndTextField(
+            textFieldType: TextFieldType.password,
             validator: FormValidationHelper.validatePassword,
             controller: _passwordController,
             label: "password",

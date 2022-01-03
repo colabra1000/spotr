@@ -58,7 +58,7 @@ class RegistrationPage extends StatelessWidget {
             heading: heading(),
             subHeading: subHeading(context),
             body: body(),
-            subBottom: subBottom(),
+            subBottom: subBottom(context),
             bottom: bottom(context),
           ),
         ),
@@ -208,7 +208,7 @@ class RegistrationPage extends StatelessWidget {
     );
   }
 
-  Widget subBottom() {
+  Widget subBottom(BuildContext context) {
     return Row(
       children: [
         Text(
@@ -216,7 +216,9 @@ class RegistrationPage extends StatelessWidget {
           style: smallText,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            context.router.push(const ResetPasswordRoute());
+          },
           child: Text(
             "reset",
             style: smallText,
