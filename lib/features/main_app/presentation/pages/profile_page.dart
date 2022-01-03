@@ -2,29 +2,42 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/ui/textstyles.dart';
+import 'package:spotr/core/features/main_app/bloc/main_app_bloc.dart';
+import 'package:spotr/features/authentication/domain/entities/user_info.dart';
+import '../../../../locator.dart';
 import '../bloc/profile_page/profile_page_bloc.dart';
+import '../../../../core/ui/textstyles.dart';
 import '../widgets/layout2.dart';
 
 class ProfilePage extends StatelessWidget {
+  // final UserInfo userInfo;
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ProfilePageBloc(),
-      child: Layout2(
-        cardOne: displayProfilePanel(),
-        labelTwo: "personal information",
-        cardTwo: displayPersonalInformation(),
-        labelThree: "interests",
-        cardThree: displayInterests(
-            interests: ["football", "golf", "tennis", "bowling", "boxing"]),
-      ),
+    return BlocBuilder<MainAppBloc, MainAppState>(
+      builder: (context, state) {
+        UserInfo userInfo = UserInfo.empty();
+        if (state is NewUserDetailState) {
+          userInfo = state.userInfo;
+        }
+
+        return Layout2(
+          cardOne: displayProfilePanel(
+              name: userInfo.fullName, username: userInfo.username),
+          labelTwo: "personal information",
+          cardTwo: displayPersonalInformation(
+              email: userInfo.email, phoneNumber: userInfo.phoneNumber),
+          labelThree: "interests",
+          cardThree: displayInterests(
+            interests: userInfo.interests,
+          ),
+        );
+      },
     );
   }
 
-  Widget displayProfilePanel() {
+  Widget displayProfilePanel({required String name, required String username}) {
     return SizedBox(
       height: .4.sh,
       child: Column(
@@ -49,9 +62,9 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10.h),
-          Text("Item Quancy", style: bigText),
+          Text(name, style: bigText),
           SizedBox(height: 5.h),
-          Text("tijickt", style: mediumText),
+          Text(username, style: mediumText),
           SizedBox(height: 10.h),
           Container(
             decoration: BoxDecoration(
@@ -73,7 +86,8 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget displayPersonalInformation() {
+  Widget displayPersonalInformation(
+      {required String phoneNumber, required String email}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -89,7 +103,7 @@ class ProfilePage extends StatelessWidget {
               width: 10.w,
             ),
             Text(
-              "08098987788",
+              phoneNumber,
               style: smallText,
             ),
           ],
@@ -106,7 +120,7 @@ class ProfilePage extends StatelessWidget {
               width: 10.w,
             ),
             Text(
-              "bill@kenovule.ra",
+              email,
               style: smallText,
             ),
           ],
@@ -116,7 +130,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget displayInterests({required List<String> interests}) {
+  Widget displayInterests({required List interests}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

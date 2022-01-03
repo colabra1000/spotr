@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/features/authentication/authentication_ui_helper.dart';
+import '../../../../core/features/authentication/bloc/authentication_bloc.dart';
 import '../bloc/registration_page/registration_page_bloc.dart';
 
-import '../../../../core/authentication/authentication_ui_helper.dart';
 import '../../../../core/helpers/form_validation_helper.dart';
 import '../../../../core/route/auto_router.gr.dart';
 
-import '../../../../core/authentication/bloc/authentication_bloc.dart';
 import '../widgets/enums.dart';
 import '../widgets/label_and_text_field.dart';
 import '../widgets/layout1.dart';
@@ -23,6 +23,7 @@ class RegistrationPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
   final userNameController = TextEditingController(text: "colabra");
+  final fullNameController = TextEditingController(text: "Item Quancy");
   final emailController = TextEditingController(text: "r@mailinator.com");
   final phoneNumberController = TextEditingController(text: "09098998789");
   final passwordController = TextEditingController(text: "password");
@@ -110,6 +111,14 @@ class RegistrationPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          LabelAndTextField(
+              textFieldType: TextFieldType.text,
+              controller: fullNameController,
+              validator: FormValidationHelper.validateFullName,
+              label: "full name"),
+          SizedBox(
+            height: 20.h,
+          ),
           LabelAndTextField(
               textFieldType: TextFieldType.text,
               controller: userNameController,
@@ -228,6 +237,7 @@ class RegistrationPage extends StatelessWidget {
         onPressed: () {
           if (_formKey.currentState?.validate() == true) {
             BlocProvider.of<AuthenticationBloc>(context).add(RegistrationEvent(
+              fullName: fullNameController.text.trim(),
               username: userNameController.text.trim(),
               email: emailController.text.trim(),
               phoneNumber: phoneNumberController.text.trim(),

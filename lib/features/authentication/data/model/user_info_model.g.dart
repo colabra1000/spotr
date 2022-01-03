@@ -12,6 +12,7 @@ UserInfoModel _$UserInfoModelFromJson(Map<String, dynamic> json) =>
       interests: json['interests'],
       phoneNumber: json['phone_number'],
       username: json['username'],
+      fullName: json['full_name'],
       verified: json['verified'],
     );
 
@@ -20,6 +21,7 @@ Map<String, dynamic> _$UserInfoModelToJson(UserInfoModel instance) =>
       'email': instance.email,
       'interests': instance.interests,
       'phone_number': instance.phoneNumber,
+      'full_name': instance.fullName,
       'username': instance.username,
       'verified': instance.verified,
     };

@@ -4,12 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_styled_toast/flutter_styled_toast.dart';
-import 'package:spotr/core/authentication/authentication_ui_helper.dart';
-import 'package:spotr/core/helpers/form_validation_helper.dart';
-import 'package:spotr/core/route/auto_router.gr.dart';
 
-import '../../../../core/authentication/bloc/authentication_bloc.dart';
+import '../../../../core/features/authentication/authentication_ui_helper.dart';
+import '../../../../core/features/authentication/bloc/authentication_bloc.dart';
+import '../../../../core/helpers/form_validation_helper.dart';
+import '../../../../core/route/auto_router.gr.dart';
+
 import '../../../../core/ui/textstyles.dart';
 import '../widgets/label_and_text_field.dart';
 import '../widgets/layout1.dart';

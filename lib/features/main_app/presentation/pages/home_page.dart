@@ -1,10 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:spotr/core/route/auto_router.gr.dart';
-import 'package:spotr/core/ui/textstyles.dart';
+import 'package:spotr/features/authentication/domain/entities/user_info.dart';
+import 'package:spotr/features/main_app/presentation/bloc/settings_page/settings_page_bloc.dart';
+
+import '../../../../core/features/main_app/bloc/main_app_bloc.dart';
+import '../../../../core/route/auto_router.gr.dart';
+import '../../../../core/ui/textstyles.dart';
+import '../../../../locator.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -45,16 +51,32 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AutoTabsScaffold(
-      routes: const [
-        ProfileRoute(),
-        BuddiesRoute(),
-        DiscoverRoute(),
-        SettingsRoute(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          lazy: false,
+          create: (context) => locator<MainAppBloc>(),
+        ),
+        BlocProvider(
+          lazy: false,
+          create: (context) => locator<SettingsPageBloc>(),
+        ),
       ],
-      bottomNavigationBuilder: (_, tabsRouter) => GNav(
-        onTabChange: (index) => tabsRouter.setActiveIndex(index),
-        tabs: bottomTabs,
+      child: BlocBuilder<MainAppBloc, MainAppState>(
+        builder: (context, state) {
+          return AutoTabsScaffold(
+            routes: const [
+              ProfileRoute(),
+              BuddiesRoute(),
+              DiscoverRoute(),
+              SettingsRoute(),
+            ],
+            bottomNavigationBuilder: (_, tabsRouter) => GNav(
+              onTabChange: (index) => tabsRouter.setActiveIndex(index),
+              tabs: bottomTabs,
+            ),
+          );
+        },
       ),
     );
   }

@@ -2,10 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:spotr/core/locator.dart';
 
-import 'core/app_logic/bloc/app_bloc.dart';
-import 'core/authentication/bloc/authentication_bloc.dart';
+import 'core/features/main_app/bloc/main_app_bloc.dart';
+import 'locator.dart';
+
+import 'core/features/app_controller/bloc/app_bloc.dart';
+import 'core/features/authentication/bloc/authentication_bloc.dart';
 import 'core/route/auto_router.gr.dart';
 import 'firebase_options.dart';
 
@@ -34,15 +36,29 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (_) => locator<AppBloc>(),
           ),
+          // BlocProvider(
+          //   create: (_) => locator<MainAppBloc>(),
+          // ),
         ],
-        child: MaterialApp.router(
-          routerDelegate: _appRouter.delegate(),
-          routeInformationParser: _appRouter.defaultRouteParser(),
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
+        child: BlocListener<AppBloc, AppState>(
+          listener: (context, state) async {
+            if (state is AppLoggedInState) {
+              await locator<AppRouter>().replace(HomeRoute());
+            }
+
+            if (state is AppLoggedOutState) {
+              locator<AppRouter>().replace(const LoginRoute());
+            }
+          },
+          child: MaterialApp.router(
+            routerDelegate: _appRouter.delegate(),
+            routeInformationParser: _appRouter.defaultRouteParser(),
+            title: 'Flutter Demo',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            // home: const Scaffold(body: SafeArea(child: WelcomePage())),
           ),
-          // home: const Scaffold(body: SafeArea(child: WelcomePage())),
         ),
       ),
     );

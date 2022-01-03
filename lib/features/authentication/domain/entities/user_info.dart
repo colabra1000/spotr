@@ -6,10 +6,21 @@ class UserInfo extends Equatable {
   final List interests;
   @JsonKey(name: 'phone_number')
   final String phoneNumber;
+  @JsonKey(name: 'full_name')
+  final String fullName;
   final String username;
   final bool verified;
 
+  UserInfo.empty()
+      : fullName = "",
+        email = "",
+        interests = [],
+        phoneNumber = "",
+        username = "",
+        verified = false;
+
   const UserInfo({
+    required this.fullName,
     required this.email,
     required this.interests,
     required this.phoneNumber,

@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/dto/login_request.dart';
 import '../../../../core/errors/failures.dart';
 import '../repository/authentication_repository.dart';
-import 'usecases.dart';
+import '../../../../core/usecases/usecases.dart';
 
 class LoginUser implements UseCases<String, LoginRequest> {
   AuthenticationRepository repository;

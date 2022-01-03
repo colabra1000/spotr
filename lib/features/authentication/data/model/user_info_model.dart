@@ -10,8 +10,10 @@ class UserInfoModel extends UserInfo {
     required interests,
     required phoneNumber,
     required username,
+    required fullName,
     required verified,
   }) : super(
+          fullName: fullName,
           email: email,
           interests: interests,
           phoneNumber: phoneNumber,

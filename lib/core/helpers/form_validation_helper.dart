@@ -16,6 +16,22 @@ class FormValidationHelper {
     return null;
   }
 
+  static String? validateFullName(String? value) {
+    final validEmail =
+        RegExp(r"^[\w'\-,.]*[^_!¡?÷?¿\/\\+=@#$%ˆ&*(){}|~<>;:[\]]*$");
+
+    if (value == null || value.trim().isEmpty) {
+      return "you must enter a value";
+    }
+
+    if (!validEmail.hasMatch(value)) {
+      return "enter a valid email";
+    }
+    return null;
+  }
+
+  //
+
   static String? validatePhoneNunmber(String? value) {
     final matchPhoneNumber =
         RegExp(r"^((\+)|(00)|(\*)|())[0-9]{3,14}((\#)|())$");
@@ -46,7 +62,7 @@ class FormValidationHelper {
       return "you must enter a value";
     }
 
-    if (value.trim().length < 6) {
+    if (value.trim().length < 5) {
       return "this field must be more than 6 characters long";
     }
     final alphanumeric = RegExp(r'^[a-zA-Z0-9]+$');
@@ -62,7 +78,7 @@ class FormValidationHelper {
       return "you must enter a value";
     }
 
-    if (value.trim().length < 6) {
+    if (value.trim().length < 5) {
       return "this field must be more than 6 characters long";
     }
     final alphanumeric = RegExp(r'^[a-zA-Z0-9]+$');

@@ -1,14 +1,8 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
-import 'package:c_modal/c_modal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:spotr/core/route/auto_router.gr.dart';
 
-import '../../../../core/authentication/bloc/authentication_bloc.dart';
 import '../../../../core/ui/textstyles.dart';
-import '../widgets/label_and_text_field.dart';
 import '../widgets/layout1.dart';
 
 class VerifyByMailPage extends StatefulWidget {

@@ -1,17 +1,19 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:spotr/features/main_app/presentation/pages/main_settings_page.dart';
+import 'package:spotr/features/main_app/presentation/pages/sub_settings_page.dart';
 
-import '../../features/authentication/presentation/pages/buddies_page.dart';
-import '../../features/authentication/presentation/pages/discover_page.dart';
-import '../../features/authentication/presentation/pages/home_page.dart';
-import '../../features/authentication/presentation/pages/profile_page.dart';
+import '../../features/main_app/presentation/pages/buddies_page.dart';
+import '../../features/main_app/presentation/pages/discover_page.dart';
+import '../../features/main_app/presentation/pages/home_page.dart';
+import '../../features/main_app/presentation/pages/profile_page.dart';
 import '../../features/authentication/presentation/pages/registration_page.dart';
 import '../../features/authentication/presentation/pages/reset_password_page.dart';
-import '../../features/authentication/presentation/pages/settings_page.dart';
+import '../../features/main_app/presentation/pages/settings_page.dart';
 import '../../features/authentication/presentation/pages/verify_page.dart';
 
 import '../../features/authentication/presentation/pages/login_page.dart';
-import '../../features/authentication/presentation/pages/app_init.dart';
+import '../../app_init.dart';
 
 @MaterialAutoRouter(
   preferRelativeImports: true,
@@ -45,7 +47,10 @@ import '../../features/authentication/presentation/pages/app_init.dart';
           CustomRoute(page: ProfilePage),
           CustomRoute(page: BuddiesPage),
           CustomRoute(page: DiscoverPage),
-          CustomRoute(page: SettingsPage),
+          CustomRoute(page: SettingsPage, children: [
+            CustomRoute(page: MainSettingsPage),
+            CustomRoute(page: SubSettingsPage),
+          ]),
         ]),
 
     // AutoRoute(page: HomePage),

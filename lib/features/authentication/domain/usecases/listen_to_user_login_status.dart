@@ -1,7 +1,7 @@
 import 'package:spotr/core/errors/failures.dart';
 import 'package:dartz/dartz.dart';
 import '../repository/authentication_repository.dart';
-import 'usecases.dart';
+import '../../../../core/usecases/usecases.dart';
 
 class ListenToUserLoginStatus implements UseCases<Stream, dynamic> {
   AuthenticationRepository repository;
